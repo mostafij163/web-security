@@ -1,2 +1,2 @@
 # web-security
-implementing owasp security guide in nextjs, nodejs
+Implementing OWASP security guide in NextJS, NodeJS
