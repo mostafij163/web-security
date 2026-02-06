@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "alice",
+      "email": "alice@example.com",
+      "password": "alice123",
+      "name": "Alice Smith",
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "username": "bob",
+      "email": "bob@example.com",
+      "password": "bob123",
+      "name": "Bob Johnson",
+      "createdAt": "2024-02-20T14:30:00Z"
+    },
+    {
+      "id": "3",
+      "username": "carol",
+      "email": "carol@example.com",
+      "password": "carol123",
+      "name": "Carol Williams",
+      "createdAt": "2024-03-10T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "username": "dave",
+      "email": "dave@example.com",
+      "password": "dave123",
+      "name": "Dave Brown",
+      "createdAt": "2024-04-05T11:20:00Z"
+    },
+    {
+      "id": "5",
+      "username": "eve",
+      "email": "eve@example.com",
+      "password": "eve123",
+      "name": "Eve Davis",
+      "createdAt": "2024-05-12T08:45:00Z"
+    },
+    {
+      "id": "6",
+      "username": "frank",
+      "email": "frank@example.com",
+      "password": "frank123",
+      "name": "Frank Miller",
+      "createdAt": "2024-06-18T16:00:00Z"
+    },
+    {
+      "id": "7",
+      "username": "grace",
+      "email": "grace@example.com",
+      "password": "grace123",
+      "name": "Grace Wilson",
+      "createdAt": "2024-07-22T13:30:00Z"
+    },
+    {
+      "id": "8",
+      "username": "henry",
+      "email": "henry@example.com",
+      "password": "henry123",
+      "name": "Henry Moore",
+      "createdAt": "2024-08-30T09:00:00Z"
+    }
+  ]
+}
