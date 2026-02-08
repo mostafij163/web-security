@@ -1,12 +1,13 @@
-import express from "express";
 import cors from "cors";
+import crypto from "crypto";
+import express from "express";
 import session from "express-session";
+
 import { authRouter } from "./routes/auth.js";
 
 const app = express();
-const PORT = process.env.PORT ?? 3001;
-const SESSION_SECRET =
-  process.env.SESSION_SECRET ?? "dev-insecure-session-secret-change-me";
+const PORT = 1234;
+const SESSION_SECRET = crypto.randomBytes(32).toString("hex"); // 256 bits of entropy. 32 bytes of cryptographically secure random bytes.
 
 // In dev we can trust the first proxy (e.g. when behind Next dev server / reverse proxy)
 app.set("trust proxy", 1);
@@ -25,8 +26,10 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      httpOnly: true,
-      secure: false, // set to true when serving over HTTPS
+      domain: "localhost", // ommit domain when ever possible to prevent cross-site cookie access.
+      path: "/", // always set path to narrow down the attack vector.
+      httpOnly: true, // prevent JavaScript from accessing the cookie to prevent XSS attacks.
+      secure: process.env.NODE_ENV === "production", // set to true when serving over HTTPS to prevent MITM attacks.
       sameSite: "lax",
     },
   }),
@@ -35,10 +38,6 @@ app.use(
 app.use(express.json());
 
 app.use("/auth", authRouter);
-
-app.get("/health", (_req, res) => {
-  res.json({ status: "ok" });
-});
 
 app.listen(PORT, () => {
   console.log(`API running at http://localhost:${PORT}`);
