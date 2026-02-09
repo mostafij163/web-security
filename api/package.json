@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-redis": "^9.0.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "express-session": "^1.17.3"
