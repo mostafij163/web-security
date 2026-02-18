@@ -6,6 +6,8 @@ import { RedisStore } from "connect-redis";
 import { createClient } from "redis";
 
 import { authRouter } from "./routes/auth.js";
+import { authSession } from "./utils/session.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 1234;
@@ -27,7 +29,7 @@ app.use(
     credentials: true, // allow cookies / Authorization headers
   }),
 );
-
+app.use(cookieParser("secret"));
 app.use(express.json());
 
 // TODO: implement HSTS
@@ -66,7 +68,7 @@ const refreshTokenSession = session({
   },
 });
 
-app.use(refreshTokenSession);
+app.use(authSession);
 
 app.use("/auth", authRouter);
 
