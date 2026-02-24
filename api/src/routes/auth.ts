@@ -4,9 +4,34 @@ export const authRouter = Router();
 
 authRouter.post("/login", async (req: Request, res: Response) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    res.send("Login successful");
+    req.accessSession.data = {
+      username,
+      password,
+    };
+
+    req.refreshSession.data = {
+      username,
+      password,
+    };
+
+    req.session.data = {
+      username,
+      password,
+    };
+
+    req.session.regenerate((err) => {
+      if (err) throw err;
+
+      req.session.data = {
+        id: req.session.id,
+        username,
+        password,
+      };
+
+      return res.send("Login successful");
+    });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({
